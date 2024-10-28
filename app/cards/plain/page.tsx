@@ -27,7 +27,7 @@ const imageUrls = [
     'photo-1597589827317-4c6d6e0a90bd',
 ];
 
-const cardData: CardItem[] = Array.from({ length: 100 }, (_, index) => ({
+const cardData: CardItem[] = Array.from({ length: 50 }, (_, index) => ({
     id: index + 1,
     title: `カード${index + 1}`,
     description: `これは${
