@@ -1,95 +1,47 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    const implementations = [
+        {
+            title: 'Chakra UI v2',
+            description: 'Chakra UI を使用した実装',
+            href: './chakra-test/cards/chakra-v2',
+            bgColor: 'bg-purple-100',
+            hoverColor: 'hover:bg-purple-200',
+        },
+        {
+            title: 'Plain CSS',
+            description: 'プレーンな CSS を使用した実装',
+            href: './chakra-test/cards/plain',
+            bgColor: 'bg-blue-100',
+            hoverColor: 'hover:bg-blue-200',
+        },
+        {
+            title: 'Tailwind CSS',
+            description: 'Tailwind CSS を使用した実装',
+            href: './chakra-test/cards/tailwind',
+            bgColor: 'bg-teal-100',
+            hoverColor: 'hover:bg-teal-200',
+        },
+    ];
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    return (
+        <div className='min-h-screen bg-gray-50 py-12 px-4'>
+            <div className='max-w-3xl mx-auto'>
+                <h1 className='text-3xl font-bold text-center text-gray-900 mb-8'>カード一覧の比較</h1>
+
+                <div className='space-y-4'>
+                    {implementations.map((impl) => (
+                        <a
+                            key={impl.href}
+                            href={impl.href}
+                            target='_blank'
+                            className={`block p-6 rounded-lg ${impl.bgColor} ${impl.hoverColor} transition-colors duration-200`}
+                            rel='noreferrer'>
+                            <h2 className='text-xl font-semibold text-gray-900'>{impl.title}</h2>
+                            <p className='mt-2 text-gray-600'>{impl.description}</p>
+                        </a>
+                    ))}
+                </div>
+            </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
