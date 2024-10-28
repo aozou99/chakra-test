@@ -3,7 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # メインブランチ名に合わせて変更してください
+      - main
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
@@ -21,10 +24,11 @@ jobs:
         
       - name: Build
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /chakra-test # リポジトリ名を指定
         
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
-
