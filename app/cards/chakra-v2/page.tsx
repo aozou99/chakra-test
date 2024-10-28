@@ -2,7 +2,6 @@
 
 import {
     Avatar,
-    Badge,
     Box,
     Button,
     ButtonGroup,
