@@ -8,6 +8,13 @@ export default function Home() {
             hoverColor: 'hover:bg-purple-200',
         },
         {
+            title: 'Chakra UI v2 (render in view)',
+            description: 'Chakra UI を使用した実装、IntersectionObserver を使用して不要なレンダリングを制御',
+            href: './cards/chakra-v2/render-in-view',
+            bgColor: 'bg-purple-100',
+            hoverColor: 'hover:bg-purple-200',
+        },
+        {
             title: 'Plain CSS',
             description: 'プレーンな CSS を使用した実装',
             href: './cards/plain',

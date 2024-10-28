@@ -88,7 +88,7 @@ interface CardItemProps {
 function CardItem({ card }: CardItemProps) {
     const ref = useRef<HTMLDivElement>(null);
     const { inView, hasBeenInView } = useInView(ref);
-    console.log({ inView, hasBeenInView });
+
     return (
         <div ref={ref}>
             {inView || hasBeenInView ? (
