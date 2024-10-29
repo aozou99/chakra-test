@@ -1,53 +1,7 @@
+import { cardData } from '@/app/_constants/Cards';
 import { FaBookmark, FaComment, FaHeart, FaShare } from 'react-icons/fa';
 import styles from './styles.module.css';
 
-interface CardItem {
-    id: number;
-    title: string;
-    description: string;
-    imageUrl: string;
-    author: {
-        name: string;
-        avatar: string;
-    };
-    stats: {
-        likes: number;
-        comments: number;
-        shares: number;
-    };
-    tags: string[];
-    progress: number;
-    price: number;
-    priceChange: number;
-}
-
-const imageUrls = [
-    'photo-1555041469-a586c61ea9bc',
-    'photo-1627308595229-7830a5c91f9f',
-    'photo-1597589827317-4c6d6e0a90bd',
-];
-
-const cardData: CardItem[] = Array.from({ length: 50 }, (_, index) => ({
-    id: index + 1,
-    title: `カード${index + 1}`,
-    description: `これは${
-        index + 1
-    }つ目のカードの説明文です。より長い説明文をここに入れることで、テキストの表示領域を増やしています。`,
-    imageUrl: `https://images.unsplash.com/${imageUrls[index % imageUrls.length]}`,
-    author: {
-        name: `作者${index + 1}`,
-        avatar: `https://i.pravatar.cc/150?img=${index % 70}`,
-    },
-    stats: {
-        likes: Math.floor(Math.random() * 1000),
-        comments: Math.floor(Math.random() * 100),
-        shares: Math.floor(Math.random() * 50),
-    },
-    tags: ['タグ1', 'タグ2', 'タグ3'].map((tag) => `${tag}_${index + 1}`),
-    progress: Math.floor(Math.random() * 100),
-    price: Math.floor(Math.random() * 10000),
-    priceChange: Math.random() * 20 - 10,
-}));
 export default function PlainCardsPage() {
     return (
         <div className={styles.container}>
@@ -66,7 +20,7 @@ export default function PlainCardsPage() {
                                     <p className={styles.authorRole}>投稿者</p>
                                 </div>
                             </div>
-                            <button className={styles.bookmarkButton}>
+                            <button className={styles.bookmarkButton} type='button'>
                                 <FaBookmark />
                             </button>
                         </div>
@@ -83,7 +37,7 @@ export default function PlainCardsPage() {
 
                             {/* Progress Bar */}
                             <div className={styles.progressContainer}>
-                                <div className={styles.progressBar} style={{ width: `${card.progress}%` }}></div>
+                                <div className={styles.progressBar} style={{ width: `${card.progress}%` }} />
                             </div>
 
                             {/* Stats */}
@@ -101,8 +55,8 @@ export default function PlainCardsPage() {
 
                             {/* Tags */}
                             <div className={styles.tags}>
-                                {card.tags.map((tag, i) => (
-                                    <span key={i} className={styles.tag}>
+                                {card.tags.map((tag) => (
+                                    <span key={tag} className={styles.tag}>
                                         <FaBookmark className={styles.tagIcon} />
                                         {tag}
                                     </span>
@@ -112,15 +66,15 @@ export default function PlainCardsPage() {
 
                         {/* Card Footer */}
                         <div className={styles.cardFooter}>
-                            <button className={styles.actionButton}>
+                            <button className={styles.actionButton} type='button'>
                                 <FaHeart />
                                 <span>{card.stats.likes}</span>
                             </button>
-                            <button className={styles.actionButton}>
+                            <button className={styles.actionButton} type='button'>
                                 <FaComment />
                                 <span>{card.stats.comments}</span>
                             </button>
-                            <button className={styles.actionButton}>
+                            <button className={styles.actionButton} type='button'>
                                 <FaShare />
                                 <span>{card.stats.shares}</span>
                             </button>

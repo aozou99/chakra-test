@@ -1,5 +1,6 @@
 'use client';
 
+import { type CardItem as CardItemType, cardData } from '@/app/_constants/Cards';
 import { useInView } from '@/app/_hooks/useInView';
 import {
     Avatar,
@@ -32,57 +33,8 @@ import {
 } from '@chakra-ui/react';
 import { useRef } from 'react';
 import { FaBookmark, FaComment, FaHeart, FaShare } from 'react-icons/fa';
-
-interface CardItem {
-    id: number;
-    title: string;
-    description: string;
-    imageUrl: string;
-    author: {
-        name: string;
-        avatar: string;
-    };
-    stats: {
-        likes: number;
-        comments: number;
-        shares: number;
-    };
-    tags: string[];
-    progress: number;
-    price: number;
-    priceChange: number;
-}
-
-const imageUrls = [
-    'photo-1555041469-a586c61ea9bc',
-    'photo-1627308595229-7830a5c91f9f',
-    'photo-1597589827317-4c6d6e0a90bd',
-];
-
-const cardData: CardItem[] = Array.from({ length: 50 }, (_, index) => ({
-    id: index + 1,
-    title: `カード${index + 1}`,
-    description: `これは${
-        index + 1
-    }つ目のカードの説明文です。より長い説明文をここに入れることで、テキストの表示領域を増やしています。`,
-    imageUrl: `https://images.unsplash.com/${imageUrls[index % imageUrls.length]}`,
-    author: {
-        name: `作者${index + 1}`,
-        avatar: `https://i.pravatar.cc/150?img=${index % 70}`,
-    },
-    stats: {
-        likes: Math.floor(Math.random() * 1000),
-        comments: Math.floor(Math.random() * 100),
-        shares: Math.floor(Math.random() * 50),
-    },
-    tags: ['タグ1', 'タグ2', 'タグ3'].map((tag) => `${tag}_${index + 1}`),
-    progress: Math.floor(Math.random() * 100),
-    price: Math.floor(Math.random() * 10000),
-    priceChange: Math.random() * 20 - 10,
-}));
-
 interface CardItemProps {
-    card: CardItem;
+    card: CardItemType;
 }
 
 function CardItem({ card }: CardItemProps) {
@@ -125,8 +77,8 @@ function CardItem({ card }: CardItemProps) {
                                 </StatHelpText>
                             </Stat>
                             <Stack direction='row' flexWrap='wrap' spacing={2}>
-                                {card.tags.map((tag, i) => (
-                                    <Tag key={i} size='md' variant='subtle' colorScheme='cyan'>
+                                {card.tags.map((tag) => (
+                                    <Tag key={tag} size='md' variant='subtle' colorScheme='cyan'>
                                         <TagLeftIcon boxSize='12px' as={FaBookmark} />
                                         <TagLabel>{tag}</TagLabel>
                                     </Tag>

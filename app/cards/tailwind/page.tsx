@@ -1,52 +1,5 @@
+import { cardData } from '@/app/_constants/Cards';
 import { FaBookmark, FaComment, FaHeart, FaShare } from 'react-icons/fa';
-
-interface CardItem {
-    id: number;
-    title: string;
-    description: string;
-    imageUrl: string;
-    author: {
-        name: string;
-        avatar: string;
-    };
-    stats: {
-        likes: number;
-        comments: number;
-        shares: number;
-    };
-    tags: string[];
-    progress: number;
-    price: number;
-    priceChange: number;
-}
-
-const imageUrls = [
-    'photo-1555041469-a586c61ea9bc',
-    'photo-1627308595229-7830a5c91f9f',
-    'photo-1597589827317-4c6d6e0a90bd',
-];
-
-const cardData: CardItem[] = Array.from({ length: 50 }, (_, index) => ({
-    id: index + 1,
-    title: `カード${index + 1}`,
-    description: `これは${
-        index + 1
-    }つ目のカードの説明文です。より長い説明文をここに入れることで、テキストの表示領域を増やしています。`,
-    imageUrl: `https://images.unsplash.com/${imageUrls[index % imageUrls.length]}`,
-    author: {
-        name: `作者${index + 1}`,
-        avatar: `https://i.pravatar.cc/150?img=${index % 70}`,
-    },
-    stats: {
-        likes: Math.floor(Math.random() * 1000),
-        comments: Math.floor(Math.random() * 100),
-        shares: Math.floor(Math.random() * 50),
-    },
-    tags: ['タグ1', 'タグ2', 'タグ3'].map((tag) => `${tag}_${index + 1}`),
-    progress: Math.floor(Math.random() * 100),
-    price: Math.floor(Math.random() * 10000),
-    priceChange: Math.random() * 20 - 10,
-}));
 
 export default function TailwindCardsPage() {
     return (
@@ -71,7 +24,7 @@ export default function TailwindCardsPage() {
                                         <p className='text-sm text-gray-500'>投稿者</p>
                                     </div>
                                 </div>
-                                <button className='p-2 hover:bg-gray-100 rounded-full'>
+                                <button className='p-2 hover:bg-gray-100 rounded-full' type='button'>
                                     <FaBookmark className='w-5 h-5 text-gray-500' />
                                 </button>
                             </div>
@@ -91,7 +44,8 @@ export default function TailwindCardsPage() {
                             <div className='w-full bg-gray-200 rounded-full h-2.5'>
                                 <div
                                     className='bg-green-600 h-2.5 rounded-full'
-                                    style={{ width: `${card.progress}%` }}></div>
+                                    style={{ width: `${card.progress}%` }}
+                                />
                             </div>
 
                             {/* Stats */}
@@ -109,9 +63,9 @@ export default function TailwindCardsPage() {
 
                             {/* Tags */}
                             <div className='flex flex-wrap gap-2'>
-                                {card.tags.map((tag, i) => (
+                                {card.tags.map((tag) => (
                                     <span
-                                        key={i}
+                                        key={tag}
                                         className='px-3 py-1 bg-cyan-100 text-cyan-800 rounded-full text-sm flex items-center'>
                                         <FaBookmark className='w-3 h-3 mr-1' />
                                         {tag}
@@ -123,15 +77,21 @@ export default function TailwindCardsPage() {
                         {/* Card Footer */}
                         <div className='border-t border-gray-200'>
                             <div className='flex justify-start p-4 space-x-4'>
-                                <button className='flex items-center space-x-2 text-gray-600 hover:text-gray-800 group'>
+                                <button
+                                    className='flex items-center space-x-2 text-gray-600 hover:text-gray-800 group'
+                                    type='button'>
                                     <FaHeart className='w-5 h-5 group-hover:text-red-500' />
                                     <span>{card.stats.likes}</span>
                                 </button>
-                                <button className='flex items-center space-x-2 text-gray-600 hover:text-gray-800'>
+                                <button
+                                    className='flex items-center space-x-2 text-gray-600 hover:text-gray-800'
+                                    type='button'>
                                     <FaComment className='w-5 h-5' />
                                     <span>{card.stats.comments}</span>
                                 </button>
-                                <button className='flex items-center space-x-2 text-gray-600 hover:text-gray-800'>
+                                <button
+                                    className='flex items-center space-x-2 text-gray-600 hover:text-gray-800'
+                                    type='button'>
                                     <FaShare className='w-5 h-5' />
                                     <span>{card.stats.shares}</span>
                                 </button>
