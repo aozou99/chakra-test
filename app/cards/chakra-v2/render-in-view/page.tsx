@@ -1,6 +1,6 @@
 'use client';
 
-import { type CardItem as CardItemType, cardData } from '@/app/_constants/Cards';
+import { type CardItem as CardItemType, cardData } from '@/app/_constants/cards';
 import { useInView } from '@/app/_hooks/useInView';
 import {
     Avatar,

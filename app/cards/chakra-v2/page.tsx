@@ -1,6 +1,6 @@
 'use client';
 
-import { cardData } from '@/app/_constants/Cards';
+import { cardData } from '@/app/_constants/cards';
 import {
     Avatar,
     Box,

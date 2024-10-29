@@ -1,4 +1,4 @@
-import { cardData } from '@/app/_constants/Cards';
+import { cardData } from '@/app/_constants/cards';
 import { FaBookmark, FaComment, FaHeart, FaShare } from 'react-icons/fa';
 
 export default function TailwindCardsPage() {
